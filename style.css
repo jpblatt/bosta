@@ -18,15 +18,18 @@ h1 {
 }
 
 .slot-machine {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
   justify-content: center;
   margin: 20px 0;
 }
 
 .slot {
   font-size: 60px;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   margin: 0 10px;
   background: #fff3b0;
   border: 2px solid #f9c74f;
@@ -55,4 +58,11 @@ button:hover {
   margin-top: 20px;
   font-size: 24px;
   font-weight: bold;
+}
+
+#prize {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
 }
