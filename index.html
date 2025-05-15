@@ -1,30 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎰 Caça-Níqueis 9 Quadrados</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Game</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .slot-machine {
+            background: #b7282e;
+            border: 10px solid gold;
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+        }
+        .reel-container {
+            display: flex;
+            justify-content: center;
+        }
+        .reel {
+            display: flex;
+            flex-direction: column;
+            margin: 0 5px;
+        }
+        .symbol {
+            width: 100px;
+            height: 100px;
+            margin: 5px 0;
+            background-size: cover;
+            border: 2px solid gold;
+            border-radius: 10px;
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <div class="game-container">
-    <h1>🎰 Caça-Níqueis 9 Quadrados</h1>
     <div class="slot-machine">
-      <div class="slot" id="slot1">🍒</div>
-      <div class="slot" id="slot2">🍒</div>
-      <div class="slot" id="slot3">🍒</div>
-      <div class="slot" id="slot4">🍒</div>
-      <div class="slot" id="slot5">🍒</div>
-      <div class="slot" id="slot6">🍒</div>
-      <div class="slot" id="slot7">🍒</div>
-      <div class="slot" id="slot8">🍒</div>
-      <div class="slot" id="slot9">🍒</div>
+        <div class="reel-container" id="reels">
+            <div class="reel" id="reel1"></div>
+            <div class="reel" id="reel2"></div>
+            <div class="reel" id="reel3"></div>
+        </div>
+        <div class="controls">
+            <button class="button" onclick="spin()">Spin</button>
+        </div>
     </div>
-    <button onclick="spin()">Girar</button>
-    <p id="result"></p>
-    <p id="prize"></p>
-  </div>
 
-  <script src="script.js"></script>
+    <script>
+        const symbols = [
+            'url("gold.png")',
+            'url("wild.png")',
+            'url("bell.png")',
+            'url("redscroll.png")',
+            'url("greenluck.png")'
+        ];
+
+        function getRandomSymbol() {
+            const index = Math.floor(Math.random() * symbols.length);
+            return symbols[index];
+        }
+
+        function spin() {
+            for (let i = 1; i <= 3; i++) {
+                const reel = document.getElementById(`reel${i}`);
+                reel.innerHTML = '';
+                for (let j = 0; j < 3; j++) {
+                    const symbol = document.createElement('div');
+                    symbol.className = 'symbol';
+                    symbol.style.backgroundImage = getRandomSymbol();
+                    reel.appendChild(symbol);
+                }
+            }
+        }
+    </script>
 </body>
 </html>
