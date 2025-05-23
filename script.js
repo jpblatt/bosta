@@ -1,7 +1,7 @@
 // Função para calcular e atualizar o contador
 function updateCounter() {
     // Data de início (quando vocês se conheceram) - atualizada para 22/03/2025
-    const startDate = new Date('2025-03-22T00:00:00');
+    const startDate = new Date('2025-01-07T00:00:00');
     const currentDate = new Date();
     
     // Calcula a diferença em milissegundos
